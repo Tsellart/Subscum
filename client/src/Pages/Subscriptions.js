@@ -6,6 +6,7 @@ import API from "../utils/API";
 import { Container, Row, Col } from "../components/Grid/index";
 import Input from "../components/Input/index";
 import Button from "../components/Button/index";
+import DeleteBtn from "../components/deleteBtn/DeleteBtn"
 
 const footerStyle = {
   fontSize: "20px",
@@ -22,6 +23,7 @@ const footerStyle = {
 };
 
 const navColor = {
+  fontFamily: 'Major Mono Display, monospace',
   backgroundColor: "#57C478"
 };
 
@@ -41,9 +43,9 @@ class Subscriptions extends Component {
     }
   
 
-  deleteSub = service => {
-    API.deleteSubs(service)
-    .then(res => this.getyourSub({userName: this.state.userName}))
+  deleteSub = id => {
+    API.deleteSubs(id)
+    .then(res => this.getSubs())
     .catch(err => console.log(err));
   };
 
@@ -117,12 +119,15 @@ class Subscriptions extends Component {
                     <td key = {Items._id}>{Items.service}</td>
                     <td>{Items.price}</td>
                     <td>{Items.rate}</td>
+                    <td><DeleteBtn onClick={() => this.deleteSub(Items._id)} /></td>
                   </tr>
                 );
               })}
             </tbody>
           ): (<h3>no results to display</h3>)}
         </Table>
+        <br></br>
+        <br></br>
         <h1 style = {whiteText}>Total Cost: </h1>
         <ul>
         {this.state.Items.map((Items)=><li>{Items.price}</li>)}

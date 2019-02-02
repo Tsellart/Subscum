@@ -22,6 +22,7 @@ const footerStyle = {
 };
 
 const navColor = {
+    fontFamily: 'Major Mono Display, monospace',
     backgroundColor: "#57C478"
 };
 
