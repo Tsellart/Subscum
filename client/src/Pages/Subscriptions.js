@@ -30,6 +30,7 @@ const whiteText = {
   backgroundColor: "E9AE0B"
 };
 
+
 class Subscriptions extends Component {
       state = {
       Items: [],
@@ -122,6 +123,13 @@ class Subscriptions extends Component {
             </tbody>
           ): (<h3>no results to display</h3>)}
         </Table>
+        <h1 style = {whiteText}>Total Cost: </h1>
+        <ul>
+        {this.state.Items.map((Items)=><li>{Items.price}</li>)}
+        </ul>
+
+
+        
       </Jumbotron>
       <Footer style = {footerStyle}></Footer>
       </div>
