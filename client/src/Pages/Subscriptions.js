@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Navbar, NavItem, Footer, Table} from 'react-materialize';
 import Jumbotron from '../components/Jumbotron/index';
-import DeleteBtn from "../components/deleteBtn";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
 import { Container, Row, Col } from "../components/Grid/index";
