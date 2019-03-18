@@ -10,6 +10,10 @@ var itemsSchema = new Schema({
     index: true,
     sparse: true
   },
+  passWord: {
+    type: String,
+    require: true
+  },
   service: {
     type: String,
     },
