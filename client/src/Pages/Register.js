@@ -23,19 +23,6 @@ const navColor = {
   fontFamily: 'Major Mono Display, monospace',
   backgroundColor: "#57C478"
 }
-const sizer = {
-  margin: "auto",
-  padding: "5px",
-  backgroundColor: "#E9AE0B",
-  color: "black"
-}
-
-const colorer = {
-  backgroundColor: "#E9AE0B",
-  width: "80vh",
-  margin: "auto"
-}
-
 const whiteText = {
   color: "white"
 }
@@ -62,6 +49,7 @@ class Register extends Component {
         })
             .catch(err => console.log(err));
             console.log(this);
+            alert("Account Succesfully Created!")
             this.setState({ 
             userName: '',
             passWord: '',
@@ -73,7 +61,10 @@ class Register extends Component {
       <div className="App">
       <Navbar style = {navColor} brand='S.O.S' right>
         <NavItem>
-          <Link to = {'/Subscriptions'}>Log-In</Link>
+        <p>Already Registered?</p>
+        </NavItem>
+        <NavItem>
+          <Link to = {'/Login'}>Log-In</Link>
         </NavItem>
       </Navbar>
       <Jumbotron>
@@ -94,7 +85,7 @@ class Register extends Component {
                     name="passWord"
                     value={this.state.passWord}
                     onChange={this.handleInputChange}
-                    placeholder="Password"
+                    placeholder="Password (Min 6 characters)"
                     />
                 </Col>
             </Row>
@@ -110,7 +101,7 @@ class Register extends Component {
                 </Col>
                 <Col size="xs-3 sm-1">
                     <Button>
-                        <Link style = {whiteText} to = {'/Subscriptions'}>Continue</Link>
+                        <Link style = {whiteText} to = {'/Login'}>Continue</Link>
                     </Button>
                 </Col>
             </Row>

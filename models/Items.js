@@ -12,7 +12,9 @@ var itemsSchema = new Schema({
   },
   passWord: {
     type: String,
-    require: true
+    require: true,
+    trim: true,
+    minlength: [6, 'Password is required!'],
   },
   service: {
     type: String,

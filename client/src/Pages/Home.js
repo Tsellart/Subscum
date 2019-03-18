@@ -44,7 +44,7 @@ class Home extends Component {
       <div className="App">
       <Navbar style = {navColor} brand='S.O.S' right>
         <NavItem>
-          <Link to = {'/Subscriptions'}>Log-In</Link>
+          <Link to = {'/Login'}>Log-In</Link>
         </NavItem>
       </Navbar>
       <Jumbotron>
@@ -56,7 +56,7 @@ class Home extends Component {
             where money is going.</h2>}>
           <br></br>
           <Button waves='light'>
-          <Link style = {whiteText} to = {'/Form2'}>Sign Up</Link>
+          <Link style = {whiteText} to = {'/Register'}>Sign Up</Link>
           </Button>
         </Card>
       </Jumbotron>
