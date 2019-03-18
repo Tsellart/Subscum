@@ -58,8 +58,15 @@ class FormTwo extends Component {
         price: this.state.price,
         rate: this.state.rate,
     })
-      .catch(err => console.log(err));
-      console.log(this);
+        .catch(err => console.log(err));
+        console.log(this);
+        this.setState({ 
+        userName: '',
+        service: '',
+        price: '',
+        rate: '',
+        })
+
     };
 
   render() {
