@@ -93,7 +93,7 @@ class Subscriptions extends Component {
     .then(res => this.setState({ Items: res.data, _id: '', service: '', price: '', rate: ''})
     )
     .catch(err => console.log(err));
-    console.log(this);
+    console.log(this.state.Items);
   };
 
   deleteSub = id => {
@@ -102,6 +102,7 @@ class Subscriptions extends Component {
     .catch(err => console.log(err));
   };
 
+  
 
   render() {
     return (
@@ -168,8 +169,9 @@ class Subscriptions extends Component {
         <br></br>
         <h1 style = {whiteText}>Total Cost: </h1>
         <ul>
-        {this.state.Items.map((Items)=><li>{Items.price}</li>)}
+        {this.state.Items.reduce((totalItems, service) => totalItems + parseFloat(service.price,10),0)}
         </ul>
+
 
 
         
