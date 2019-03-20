@@ -32,7 +32,8 @@ const conatinerColor = {
 
 const whiteText = {
     color: "white",
-    backgroundColor: "E9AE0B"
+    backgroundColor: "E9AE0B",
+    fontFamily: 'Coiny, cursive'
 };
 
 class FormTwo extends Component {
