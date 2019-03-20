@@ -5,7 +5,6 @@ var Schema = mongoose.Schema;
 var itemsSchema = new Schema({
   userName: {
     type: String,
-    unique: true,
     require: true,
     index: true,
     sparse: true
