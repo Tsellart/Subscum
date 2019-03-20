@@ -47,7 +47,7 @@ class Login extends Component {
       handleFormSubmit = event => {
         event.preventDefault();
         Axios({
-          url: 'http://localhost:3000/api/items/?userName=' + this.state.userName,
+          url: '/api/items/?userName=' + this.state.userName,
           method: 'get',
           data: {
             userName: ''

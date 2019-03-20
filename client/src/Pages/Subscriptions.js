@@ -65,7 +65,7 @@ class Subscriptions extends Component {
 
   resetPage = () => {
     Axios({
-      url: 'http://localhost:3000/api/items/?userName=' + this.props.location.state,
+      url: '/api/items/?userName=' + this.props.location.state,
       method: 'get',
       data: {
         _id: '',
@@ -83,7 +83,7 @@ class Subscriptions extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     Axios({
-      url: 'http://localhost:3000/api/items/?userName=' + this.props.location.state,
+      url: '/api/items/?userName=' + this.props.location.state,
       method: 'get',
       data: {
         _id: '',
