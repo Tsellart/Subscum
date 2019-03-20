@@ -69,6 +69,13 @@ class Register extends Component {
       </Navbar>
       <Jumbotron>
         <Container>
+          <br></br>
+          <br></br>
+          <br></br>
+          <h1 style = {whiteText}>Register and Start Saving!</h1>
+          <br></br>
+          <br></br>
+          <br></br>
             <Row>
                 <Col size= "xs-12 sm-12">
                     <Input

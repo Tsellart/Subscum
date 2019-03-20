@@ -7,6 +7,7 @@ import { Container, Row, Col } from "../components/Grid/index";
 import Input from "../components/Input/index";
 import Button from "../components/Button/index";
 import DeleteBtn from "../components/deleteBtn/DeleteBtn"
+import Axios from 'axios';
 
 const footerStyle = {
   fontSize: "20px",
@@ -36,19 +37,23 @@ const whiteText = {
 class Subscriptions extends Component {
       state = {
       Items: [],
-      userName: '',
+      id: '',
       service: '',
       price: '',
       rate: ''
     }
   
+  componentDidMount() {
+    this.loadItems();
+  }
 
-  deleteSub = id => {
-    API.deleteSubs(id)
-    .then(res => this.getSubs())
-    .catch(err => console.log(err));
-  };
-
+  loadItems = () => {
+    API.getSubs()
+    .then(json => console.log(json.data))
+      .catch(err => console.log(err));
+      console.log(this);
+  }
+  
   handleInputChange = event => {
     const {name, value} = event.target;
     this.setState({
@@ -56,14 +61,47 @@ class Subscriptions extends Component {
     });
   };
 
+  resetPage = () => {
+    Axios({
+      url: 'http://localhost:3000/api/items/?userName=' + this.state.userName,
+      method: 'get',
+      data: {
+        _id: '',
+        service: '',
+        price: '',
+        rate: ''
+      }
+    })
+    .then(res => this.setState({ Items: res.data, _id: '', service: '', price: '', rate: ''})
+    )
+    .catch(err => console.log(err));
+    console.log(this);
+  }
+
   handleFormSubmit = event => {
     event.preventDefault();
-    API.getSubs()
-    .then(res => this.setState({ Items: res.data, service: '', price: '', rate: ''})
+    Axios({
+      url: 'http://localhost:3000/api/items/?userName=' + this.state.userName,
+      method: 'get',
+      data: {
+        _id: '',
+        service: '',
+        price: '',
+        rate: ''
+      }
+    })
+    .then(res => this.setState({ Items: res.data, _id: '', service: '', price: '', rate: ''})
     )
     .catch(err => console.log(err));
     console.log(this);
   };
+
+  deleteSub = id => {
+    API.deleteSubs(id)
+    .then(res => this.resetPage())
+    .catch(err => console.log(err));
+  };
+
 
   render() {
     return (
@@ -111,7 +149,7 @@ class Subscriptions extends Component {
               <th><strong>Rate</strong></th>
             </tr>
           </thead>
-          {this.state.userName.length ? (
+          {this.state.Items.length ? (
             <tbody>
               {this.state.Items.map(Items => {
                 return (

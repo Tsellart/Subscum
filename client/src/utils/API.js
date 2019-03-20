@@ -4,8 +4,8 @@ export default {
   getSubs: function() {
     return axios.get("/api/items/");
   },
-  getyourSub: function(id) {
-    return axios.get("/api/items/" + id);
+  getyourSub: function(data) {
+    return axios.get("/api/items/" + data);
   },
   deleteSubs: function(id) {
     return axios.delete("/api/items/" + id);

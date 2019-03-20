@@ -67,37 +67,46 @@ class Login extends Component {
       </Navbar>
       <Jumbotron>
         <Container>
-            <Row>
-                <Col size= "xs-12 sm-12">
-                    <Input
-                    name="userName"
-                    value={this.state.userName}
-                    onChange={this.handleInputChange}
-                    placeholder="UserName"
-                    />
-                </Col>
-            </Row>
-            <Row>
-                <Col size= "xs-12 sm-12">
-                    <Input
-                    name="passWord"
-                    value={this.state.passWord}
-                    onChange={this.handleInputChange}
-                    placeholder="Password"
-                    />
-                </Col>
-            </Row>
-            <Row>
-                <Col size="xs-12 sm-12">
-                    <Button style = {whiteText}
-                        onClick={this.handleFormSubmit}
-                        type="success"
-                        className="input-lg"
-                        >
-                        <Link to = {'/Subscriptions'}>Log-In</Link>
-                    </Button>
-                </Col>
-            </Row>
+          <br></br>
+          <br></br>
+          <br></br>
+          <h1 style = {whiteText}>Log-In</h1>
+          <br></br>
+          <br></br>
+          <br></br>
+          <form>
+              <Row>
+                  <Col size= "xs-12 sm-12">
+                      <Input
+                      name="userName"
+                      value={this.state.userName}
+                      onChange={this.handleInputChange}
+                      placeholder="UserName"
+                      />
+                  </Col>
+              </Row>
+              <Row>
+                  <Col size= "xs-12 sm-12">
+                      <Input
+                      name="passWord"
+                      value={this.state.passWord}
+                      onChange={this.handleInputChange}
+                      placeholder="Password"
+                      />
+                  </Col>
+              </Row>
+              <Row>
+                  <Col size="xs-12 sm-12">
+                      <Button style = {whiteText}
+                          onClick={this.handleFormSubmit}
+                          type="success"
+                          className="input-lg"
+                          >
+                          <Link to = {'/Subscriptions'}>Log-In</Link>
+                      </Button>
+                  </Col>
+              </Row>
+            </form>
         </Container>
       </Jumbotron>
       <Footer style = {footerStyle}></Footer>
