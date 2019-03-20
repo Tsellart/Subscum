@@ -81,7 +81,7 @@ class FormTwo extends Component {
                     <Link to = {{ pathname: '/Subscriptions', state: this.state.userName}}>My Subscriptions</Link>
                 </NavItem>
                 <NavItem>
-                    <Link to = {'/Home'}>Sign-Out</Link>
+                    <Link to = {'/Home'}>Log-Out</Link>
                 </NavItem>
             </Navbar>
             <Jumbotron>

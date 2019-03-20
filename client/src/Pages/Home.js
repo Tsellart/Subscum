@@ -22,15 +22,15 @@ const navColor = {
 }
 const sizer = {
   fontFamily: 'Coiny, cursive',
-  margin: "auto",
   padding: "5px",
+  size: "100%",
   backgroundColor: " rgb(255, 207, 75)",
   color: "black"
 }
 
 const colorer = {
   backgroundColor: " rgb(255, 207, 75)",
-  width: "80vh",
+  height: "80%",
   margin: "auto",
   fontFamily: 'Coiny, cursive',
   
@@ -40,6 +40,9 @@ const whiteText = {
   color: "white"
 }
 
+const imgSize = {
+  width: '50%'
+}
 
 
 class Home extends Component {
