@@ -4,10 +4,10 @@ import Jumbotron from '../components/Jumbotron/index';
 import { Link } from "react-router-dom";
 import API from "../utils/API";
 import { Container, Row, Col } from "../components/Grid/index";
-import Input from "../components/Input/index";
 import Button from "../components/Button/index";
 import DeleteBtn from "../components/deleteBtn/DeleteBtn"
 import Axios from 'axios';
+import AccountItem from "../components/Login2/accountitem"
 
 const footerStyle = {
   fontSize: "20px",
@@ -38,6 +38,7 @@ class Subscriptions extends Component {
       state = {
       Items: [],
       id: '',
+      userName: this.props.location.state,
       service: '',
       price: '',
       rate: ''
@@ -45,6 +46,7 @@ class Subscriptions extends Component {
   
   componentDidMount() {
     this.loadItems();
+    this.resetPage();
   }
 
   loadItems = () => {
@@ -63,7 +65,7 @@ class Subscriptions extends Component {
 
   resetPage = () => {
     Axios({
-      url: 'http://localhost:3000/api/items/?userName=' + this.state.userName,
+      url: 'http://localhost:3000/api/items/?userName=' + this.props.location.state,
       method: 'get',
       data: {
         _id: '',
@@ -72,7 +74,7 @@ class Subscriptions extends Component {
         rate: ''
       }
     })
-    .then(res => this.setState({ Items: res.data, _id: '', service: '', price: '', rate: ''})
+    .then(res => this.setState({ Items: res.data, _id: '',  service: '', price: '', rate: ''})
     )
     .catch(err => console.log(err));
     console.log(this);
@@ -81,7 +83,7 @@ class Subscriptions extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     Axios({
-      url: 'http://localhost:3000/api/items/?userName=' + this.state.userName,
+      url: 'http://localhost:3000/api/items/?userName=' + this.props.location.state,
       method: 'get',
       data: {
         _id: '',
@@ -109,7 +111,7 @@ class Subscriptions extends Component {
       <div className="App">
       <Navbar style = {navColor} brand='S.O.S' right>
       <NavItem>
-        <Link to = {'/Form2'}>Manage Subscriptions</Link>
+        <Link to = {{pathname: '/Form2', state: this.state.userName}}>Manage Subscriptions</Link>
       </NavItem>
       <NavItem>
         <Link to = {'/home'}>Log-Out</Link>
@@ -118,28 +120,15 @@ class Subscriptions extends Component {
       <Jumbotron>
         <Container >
           <Row>
-            <Col size="xs-3 sm-4">
-              <h2 style = {whiteText}>Enter your Username</h2>
+            <Col size="xs-12 sm-12">
+              <h2 style = {whiteText}>Hi, {this.props.location.state}</h2>
             </Col>
           </Row>
           <Row>
-            <Col size="xs-3 sm-4">
-              <Input 
-                name="userName"
-                value={this.state.userName}
-                onChange={this.handleInputChange}
-                placeholder="Username"
-              />
-            </Col>
-            <Col size="xs-3 sm-2">
-              <Button style = {whiteText}
-                onClick={this.handleFormSubmit}
-                type="success"
-                className="input-lg"
-                >Fetch
-              </Button>
-            </Col>
           </Row>
+          <Row>
+          </Row>
+          <br></br>
         </Container>
         <h1 style = {whiteText}>Your Subscriptions</h1>
         <Table className="striped">
@@ -168,9 +157,9 @@ class Subscriptions extends Component {
         <br></br>
         <br></br>
         <h1 style = {whiteText}>Total Cost: </h1>
-        <ul>
+        <h2 style = {whiteText}>
         {this.state.Items.reduce((totalItems, service) => totalItems + parseFloat(service.price,10),0)}
-        </ul>
+        </h2>
 
 
 

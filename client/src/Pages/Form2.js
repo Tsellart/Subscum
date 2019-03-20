@@ -37,7 +37,7 @@ const whiteText = {
 
 class FormTwo extends Component {
   state = {
-    userName: "",
+    userName: this.props.location.state,
     service: "",
     price: "",
     rate: ""
@@ -61,7 +61,6 @@ class FormTwo extends Component {
         .catch(err => console.log(err));
         console.log(this);
         this.setState({ 
-        userName: '',
         service: '',
         price: '',
         rate: '',
@@ -74,7 +73,7 @@ class FormTwo extends Component {
         <div>
             <Navbar style = {navColor} brand='S.O.S' right>
                 <NavItem>
-                    <Link to = {'/Subscriptions'}>My Subscriptions</Link>
+                    <Link to = {{ pathname: '/Subscriptions', state: this.state.userName}}>My Subscriptions</Link>
                 </NavItem>
                 <NavItem>
                     <Link to = {'/Home'}>Sign-Out</Link>
@@ -86,14 +85,7 @@ class FormTwo extends Component {
                     <br></br>
                     <form style = {conatinerColor}>
                         <Row>
-                            <Col size="xs-3 sm-4">
-                                <Input 
-                                    name="userName"
-                                    value={this.state.userName}
-                                    onChange={this.handleInputChange}
-                                    placeholder="Username"
-                                    />
-                            </Col>
+                            <h2 style = {whiteText}>{this.props.location.state}</h2>
                         </Row>
                         <br></br>
                         <br></br>
@@ -142,7 +134,7 @@ class FormTwo extends Component {
                             </Col>
                             <Col size="xs-3 sm-1">
                                 <Button>
-                                <Link style = {whiteText} to = {'/Subscriptions'}>Continue</Link>
+                                <Link style = {whiteText} to = {{ pathname: '/Subscriptions', state: this.state.userName}}>Continue</Link>
                                 </Button>
                             </Col>
                         </Row>

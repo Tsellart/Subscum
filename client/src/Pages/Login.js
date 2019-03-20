@@ -6,6 +6,8 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import './style.css';
 import Input from '../components/Input';
+import Login2 from '../components/Login2/login2';
+import Axios from 'axios'
 
 const footerStyle = {
   fontSize: "20px",
@@ -44,15 +46,18 @@ class Login extends Component {
     
       handleFormSubmit = event => {
         event.preventDefault();
-        API.getSubs({
-            userName: this.state.userName,
-            passWord: this.state.passWord,
+        Axios({
+          url: 'http://localhost:3000/api/items/?userName=' + this.state.userName,
+          method: 'get',
+          data: {
+            userName: ''
+          }
         })
             .catch(err => console.log(err));
             console.log(this);
             alert("Logged into " + this.state.userName)
             this.setState({ 
-            userName: '',
+            
             passWord: '',
             })
     
@@ -102,7 +107,7 @@ class Login extends Component {
                           type="success"
                           className="input-lg"
                           >
-                          <Link to = {'/Subscriptions'}>Log-In</Link>
+                          <Link to = {{pathname: '/Subscriptions', state: this.state.userName}}>Log-In</Link>
                       </Button>
                   </Col>
               </Row>

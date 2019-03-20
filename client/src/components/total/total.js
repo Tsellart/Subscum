@@ -6,7 +6,7 @@ class Total extends Component {
         values: []
     }
     async componentDidMount () {
-        const response = await axios.get(query_url, {headers:headers})
+        const response = await axios.get('http://localhost:3000/api/items/?userName=' + this.state.userName', {headers:headers})
         //console.log(response.data.data[0]); 
         if(response) {
             const data = await Promise.all(response.data.data

@@ -6,20 +6,18 @@ import FormTwo from './Pages/Form2';
 import Register from './Pages/Register';
 import Login from './Pages/Login';
 
+const UsernameContext = React.createContext('');
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state= {
-      userName: JSON.parse(localStorage.getItem('userName')) || []
-    }
+      userName: ''   };
   }
 
-  addUser = (newuserName) => {
-    this.setState({
-      userName: this.state.userName.concat(newuserName)
-    },() => {
-      localStorage.setItem('userName', JSON.stringify(this.state.userName))
+  onUsernameChange = (userName) => {
+    this.setstate({
+      userName: userName
     });
   }
   render() {
@@ -27,18 +25,26 @@ class App extends Component {
     return (
       <Router>
         <div>
+        <UsernameContext.Provider value= {this.state.userName}>
           <Switch>
             <Route exact path = "/" component={Home} />
             <Route exact path = "/Home" component={Home} />
-            <Route exact path = "/Subscriptions" component={Subscriptions} />
-            <Route exact path = "/Form2" component={FormTwo} />
+            <Route exact path = "/Subscriptions" component={Subscriptions} userName = {this.state.userName} />
+            <Route exact path = "/Form2" component={FormTwo} userName = {this.state.userName} />
             <Route exact path = "/Register" component={Register} />
-            <Route exact path = "/Login" component={Login} />
+            <Route exact path = "/Login" component={Login} onUsernameChange = {this.onUsernameChange} />
           </Switch>
+        </UsernameContext.Provider>
         </div>
       </Router>
     )
   }
 }
 
+
+
+
+
 export default App;
+
+
