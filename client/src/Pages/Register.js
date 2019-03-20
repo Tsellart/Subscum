@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button, Navbar, NavItem, Footer} from 'react-materialize';
+import {Card,Button, Navbar, NavItem, Footer} from 'react-materialize';
 import Jumbotron from '../components/Jumbotron/index';
 import { Container, Row, Col } from "../components/Grid/index";
 import API from "../utils/API";
@@ -20,11 +20,21 @@ const footerStyle = {
 };
 
 const navColor = {
-  fontFamily: 'Major Mono Display, monospace',
+  fontFamily: 'Coiny, cursive',
   backgroundColor: "#57C478"
 }
 const whiteText = {
-  color: "white"
+  color: "white",
+  fontFamily: 'Coiny, cursive'
+}
+
+const colorer = {
+  backgroundColor: "#E9AE0B",
+  width: "100vh",
+  margin: "auto",
+  alignSelf: "center",
+  borderStyle: "Solid",
+  borderColor: "#000000"
 }
 
 
@@ -43,11 +53,6 @@ class Register extends Component {
     
       handleFormSubmit = event => {
         event.preventDefault();
-        API.saveSubs({
-            userName: this.state.userName,
-            passWord: this.state.passWord,
-        })
-            .catch(err => console.log(err));
             console.log(this);
             alert("Account Succesfully Created!")
             this.setState({ 
@@ -61,21 +66,13 @@ class Register extends Component {
       <div className="App">
       <Navbar style = {navColor} brand='S.O.S' right>
         <NavItem>
-        <p>Already Registered?</p>
-        </NavItem>
-        <NavItem>
-          <Link to = {'/Login'}>Log-In</Link>
+          <Link to = {'/Login'}>Already Registered? Log-In</Link>
         </NavItem>
       </Navbar>
       <Jumbotron>
-        <Container>
-          <br></br>
-          <br></br>
-          <br></br>
-          <h1 style = {whiteText}>Register and Start Saving!</h1>
-          <br></br>
-          <br></br>
-          <br></br>
+      <h1 style = {whiteText}>Register and Start Saving!</h1>
+        <Container >
+          
             <Row>
                 <Col size= "xs-12 sm-12">
                     <Input
@@ -97,21 +94,18 @@ class Register extends Component {
                 </Col>
             </Row>
             <Row>
-                <Col size="xs-3 sm-6">
-                    <Button style = {whiteText}
+                <Col size="xs-12 sm-12">
+                    <Button waves = 'light' style = {whiteText}
                         onClick={this.handleFormSubmit}
                         type="success"
                         className="input-lg"
                         >
-                        Submit
-                    </Button>
-                </Col>
-                <Col size="xs-3 sm-1">
-                    <Button>
-                        <Link style = {whiteText} to = {'/Login'}>Continue</Link>
+                        <Link style = {whiteText} to = {'/Login'}>Submit</Link>
+                        
                     </Button>
                 </Col>
             </Row>
+          
         </Container>
       </Jumbotron>
       <Footer style = {footerStyle}></Footer>

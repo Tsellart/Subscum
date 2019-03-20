@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import {Button, Navbar, NavItem, Footer} from 'react-materialize';
+import {Card, Button, Navbar, NavItem, Footer} from 'react-materialize';
 import Jumbotron from '../components/Jumbotron/index';
 import { Container, Row, Col } from "../components/Grid/index";
-import API from "../utils/API";
 import { Link } from "react-router-dom";
 import './style.css';
 import Input from '../components/Input';
-import Login2 from '../components/Login2/login2';
 import Axios from 'axios'
 
 const footerStyle = {
@@ -22,14 +20,24 @@ const footerStyle = {
 };
 
 const navColor = {
-  fontFamily: 'Major Mono Display, monospace',
+  fontFamily: 'Coiny, cursive',
   backgroundColor: "#57C478"
 }
 
 const whiteText = {
-  color: "white"
+  color: "white",
+  fontFamily: 'Coiny, cursive'
 }
 
+const colorer = {
+  backgroundColor: "#E9AE0B",
+  width: "100vh",
+  margin: "auto",
+  alignSelf: "center",
+  borderStyle: "Solid",
+  borderColor: "#000000",
+  display: "flex"
+}
 
 class Login extends Component {
     state = {
@@ -71,14 +79,8 @@ class Login extends Component {
         </NavItem>
       </Navbar>
       <Jumbotron>
-        <Container>
-          <br></br>
-          <br></br>
-          <br></br>
-          <h1 style = {whiteText}>Log-In</h1>
-          <br></br>
-          <br></br>
-          <br></br>
+      <h1 style = {whiteText}>Log-In</h1>
+        <Container>         
           <form>
               <Row>
                   <Col size= "xs-12 sm-12">
@@ -102,16 +104,17 @@ class Login extends Component {
               </Row>
               <Row>
                   <Col size="xs-12 sm-12">
-                      <Button style = {whiteText}
+                      <Button waves = 'light' style = {whiteText}
                           onClick={this.handleFormSubmit}
                           type="success"
                           className="input-lg"
                           >
-                          <Link to = {{pathname: '/Subscriptions', state: this.state.userName}}>Log-In</Link>
+                          <Link to = {{pathname: '/Form2', state: this.state.userName}}>Log-In</Link>
                       </Button>
                   </Col>
               </Row>
             </form>
+            
         </Container>
       </Jumbotron>
       <Footer style = {footerStyle}></Footer>

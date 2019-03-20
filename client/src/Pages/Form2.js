@@ -22,7 +22,7 @@ const footerStyle = {
 };
 
 const navColor = {
-    fontFamily: 'Major Mono Display, monospace',
+    fontFamily: 'Coiny, cursive',
     backgroundColor: "#57C478"
 };
 
@@ -60,6 +60,7 @@ class FormTwo extends Component {
     })
         .catch(err => console.log(err));
         console.log(this);
+        alert(this.state.service + " Added to your account!")
         this.setState({ 
         service: '',
         price: '',
@@ -73,6 +74,9 @@ class FormTwo extends Component {
         <div>
             <Navbar style = {navColor} brand='S.O.S' right>
                 <NavItem>
+                    Hi, {this.props.location.state}
+                </NavItem>
+                <NavItem>
                     <Link to = {{ pathname: '/Subscriptions', state: this.state.userName}}>My Subscriptions</Link>
                 </NavItem>
                 <NavItem>
@@ -80,16 +84,13 @@ class FormTwo extends Component {
                 </NavItem>
             </Navbar>
             <Jumbotron>
+
+            <h1 style = {whiteText}>Enter your Subscriptions!</h1>
+
+
                 <Container>
-                    <h1 style = {whiteText}>Enter your Subscriptions!</h1>
-                    <br></br>
-                    <form style = {conatinerColor}>
-                        <Row>
-                            <h2 style = {whiteText}>{this.props.location.state}</h2>
-                        </Row>
-                        <br></br>
-                        <br></br>
-                        <br></br>
+                    
+                    <form>
                         <Row>
                             <Col size="xs-9 sm-12">
                             <Input
@@ -122,19 +123,15 @@ class FormTwo extends Component {
                             />
                             </Col>
                         </Row>
+                        <br></br>
                         <Row>
-                            <Col size="xs-3 sm-6">
+                            <Col size="xs-12 sm-12">
                                 <Button style = {whiteText}
                                     onClick={this.handleFormSubmit}
                                     type="success"
                                     className="input-lg"
                                     >
                                     Submit
-                                </Button>
-                            </Col>
-                            <Col size="xs-3 sm-1">
-                                <Button>
-                                <Link style = {whiteText} to = {{ pathname: '/Subscriptions', state: this.state.userName}}>Continue</Link>
                                 </Button>
                             </Col>
                         </Row>

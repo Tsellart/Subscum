@@ -17,25 +17,29 @@ const footerStyle = {
 };
 
 const navColor = {
-  fontFamily: 'Major Mono Display, monospace',
+  fontFamily: 'Coiny, cursive',
   backgroundColor: "#57C478"
 }
 const sizer = {
+  fontFamily: 'Coiny, cursive',
   margin: "auto",
   padding: "5px",
-  backgroundColor: "#E9AE0B",
+  backgroundColor: " rgb(255, 207, 75)",
   color: "black"
 }
 
 const colorer = {
-  backgroundColor: "#E9AE0B",
+  backgroundColor: " rgb(255, 207, 75)",
   width: "80vh",
-  margin: "auto"
+  margin: "auto",
+  fontFamily: 'Coiny, cursive',
+  
 }
 
 const whiteText = {
   color: "white"
 }
+
 
 
 class Home extends Component {
@@ -48,10 +52,10 @@ class Home extends Component {
         </NavItem>
       </Navbar>
       <Jumbotron>
-        <Card style = {colorer} header={<CardTitle reveal image={require('../IMG/Plan.jpg')} style = {sizer} waves='light'/>}
+        <Card hoverable style = {colorer} header={<CardTitle reveal image={require('../IMG/Plan.jpg')} style = {sizer} waves='light'/>}
           title="Subscribe? or Save?"
-          reveal = {<h2>A subscription tracker designed to calculate monthly
-            expenditures and remind users of when payments are due. It is valuable
+          reveal = {<h2>Ever check your bank statement and see a charge from a service that you forgot to cancel or don't use? Try S.O.S! A subscription tracker designed to calculate monthly
+            expenditures and remind users of how much they're spending. It is valuable
             as a tool to follow financial output and as a visual aid to show
             where money is going.</h2>}>
           <br></br>
